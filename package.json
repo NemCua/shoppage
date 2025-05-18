@@ -1,0 +1,31 @@
+{
+  "name": "cafe-shop-page",
+  "version": "1.0.0",
+  "description": "page cafe",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NemCua/shoppage.git"
+  },
+  "keywords": [
+    "cafe"
+  ],
+  "author": "nemcua",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NemCua/shoppage/issues"
+  },
+  "homepage": "https://github.com/NemCua/shoppage#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Admin Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/reponsive.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include('../partials/slide-bar') %>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- top header -->
+            <%- include('../partials/header') %>
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                
+
+                <!-- Products Page -->
+                
+
+                <!-- Inventory Page -->
+                
+
+                <!-- Orders Page -->
+                
+
+                <!-- Users Page -->
+                
+
+                <!-- Reports Page -->
+                
+
+                <!-- Settings Page -->
+                <section id="settings-page" class="content-page">
+                    <div class="page-header">
+                        <h2>System Settings</h2>
+                        <button class="save-settings-btn" id="save-all-settings"><i class="fas fa-save"></i> Save All Changes</button>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <div class="settings-sidebar">
+                            <ul class="settings-nav">
+                                <li data-tab="general" class="active">General Settings</li>
+                                <li data-tab="company">Company Information</li>
+                                <li data-tab="inventory">Inventory Settings</li>
+                                <li data-tab="notifications">Notifications</li>
+                                <li data-tab="users">User Permissions</li>
+                                <li data-tab="backup">Backup & Restore</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="settings-content">
+                            <!-- General Settings Tab -->
+                            <div class="settings-tab active" id="general-tab">
+                                <h3>General Settings</h3>
+                                <form id="general-settings-form">
+                                    <div class="form-group">
+                                        <label for="site-title">Site Title</label>
+                                        <input type="text" id="site-title" value="Beverage Admin Dashboard">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="date-format">Date Format</label>
+                                            <select id="date-format">
+                                                <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+                                                <option value="dd/mm/yyyy">DD/MM/YYYY</option>
+                                                <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="time-format">Time Format</label>
+                                            <select id="time-format">
+                                                <option value="12h">12 Hour</option>
+                                                <option value="24h">24 Hour</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="currency">Currency</label>
+                                            <select id="currency">
+                                                <option value="USD">US Dollar ($)</option>
+                                                <option value="EUR">Euro (€)</option>
+                                                <option value="GBP">British Pound (£)</option>
+                                                <option value="JPY">Japanese Yen (¥)</option>
+                                                <option value="CNY">Chinese Yuan (¥)</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="language">Language</label>
+                                            <select id="language">
+                                                <option value="en">English</option>
+                                                <option value="es">Spanish</option>
+                                                <option value="fr">French</option>
+                                                <option value="de">German</option>
+                                                <option value="zh">Chinese</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="timezone">Timezone</label>
+                                        <select id="timezone">
+                                            <option value="UTC">UTC</option>
+                                            <option value="EST">Eastern Time (UTC-5)</option>
+                                            <option value="CST">Central Time (UTC-6)</option>
+                                            <option value="MST">Mountain Time (UTC-7)</option>
+                                            <option value="PST">Pacific Time (UTC-8)</option>
+                                            <option value="GMT">Greenwich Mean Time (UTC+0)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="enable-dark-mode">
+                                            <span class="checkbox-custom"></span>
+                                            Enable Dark Mode
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Company Information Tab -->
+                            <div class="settings-tab" id="company-tab">
+                                <h3>Company Information</h3>
+                                <form id="company-settings-form">
+                                    <div class="form-group">
+                                        <label for="company-name">Company Name</label>
+                                        <input type="text" id="company-name" value="Beverage Co.">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="company-email">Email</label>
+                                            <input type="email" id="company-email" value="contact@beverageco.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company-phone">Phone</label>
+                                            <input type="tel" id="company-phone" value="(123) 456-7890">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-address">Address</label>
+                                        <textarea id="company-address" rows="3">123 Beverage St, Suite 100
+Beverage City, BC 12345
+United States</textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="tax-id">Tax ID / VAT Number</label>
+                                            <input type="text" id="tax-id" value="123-456-7890">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="registration-number">Registration Number</label>
+                                            <input type="text" id="registration-number" value="REG123456789">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-website">Website</label>
+                                        <input type="url" id="company-website" value="https://www.beverageco.com">
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Inventory Settings Tab -->
+                            <div class="settings-tab" id="inventory-tab">
+                                <h3>Inventory Settings</h3>
+                                <form id="inventory-settings-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="low-stock-threshold">Low Stock Threshold</label>
+                                            <input type="number" id="low-stock-threshold" value="10" min="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reorder-point">Reorder Point</label>
+                                            <input type="number" id="reorder-point" value="5" min="1">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="enable-stock-alerts" checked>
+                                            <span class="checkbox-custom"></span>
+                                            Enable Low Stock Alerts
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="enable-auto-reorder">
+                                            <span class="checkbox-custom"></span>
+                                            Enable Automatic Reorder
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stock-alert-email">Alert Notification Email</label>
+                                        <input type="email" id="stock-alert-email" value="inventory@beverageco.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="default-supplier">Default Supplier</label>
+                                        <select id="default-supplier">
+                                            <option value="supplier1">Beverage Supplier Co.</option>
+                                            <option value="supplier2">Drink Distributors Inc.</option>
+                                            <option value="supplier3">Premium Beverage Supply</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Notifications Tab -->
+                            <div class="settings-tab" id="notifications-tab">
+                                <h3>Notification Settings</h3>
+                                <form id="notification-settings-form">
+                                    <div class="settings-group">
+                                        <h4>Email Notifications</h4>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="new-order-email" checked>
+                                                <span class="checkbox-custom"></span>
+                                                New Order Notifications
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="inventory-alert-email" checked>
+                                                <span class="checkbox-custom"></span>
+                                                Inventory Alerts
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="payment-notification-email" checked>
+                                                <span class="checkbox-custom"></span>
+                                                Payment Notifications
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="user-registration-email">
+                                                <span class="checkbox-custom"></span>
+                                                New User Registrations
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="settings-group">
+                                        <h4>System Notifications</h4>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="new-order-system" checked>
+                                                <span class="checkbox-custom"></span>
+                                                New Order Notifications
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="inventory-alert-system" checked>
+                                                <span class="checkbox-custom"></span>
+                                                Inventory Alerts
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="payment-notification-system" checked>
+                                                <span class="checkbox-custom"></span>
+                                                Payment Notifications
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="user-activity-system">
+                                                <span class="checkbox-custom"></span>
+                                                User Activity Notifications
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- User Permissions Tab -->
+                            <div class="settings-tab" id="users-tab">
+                                <h3>User Permissions</h3>
+                                <form id="user-permissions-form">
+                                    <div class="role-permissions">
+                                        <h4>Admin Permissions</h4>
+                                        <p>Administrators have full access to all features and settings.</p>
+                                    </div>
+                                    
+                                    <div class="role-permissions">
+                                        <h4>Manager Permissions</h4>
+                                        <div class="permission-group">
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="manager-products" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    Manage Products
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="manager-inventory" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    Manage Inventory
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="manager-orders" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    Manage Orders
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="manager-users">
+                                                    <span class="checkbox-custom"></span>
+                                                    Manage Users
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="manager-reports" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    View Reports
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="manager-settings">
+                                                    <span class="checkbox-custom"></span>
+                                                    Modify Settings
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="role-permissions">
+                                        <h4>Staff Permissions</h4>
+                                        <div class="permission-group">
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="staff-products" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    View Products
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="staff-edit-products">
+                                                    <span class="checkbox-custom"></span>
+                                                    Edit Products
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="staff-inventory" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    View Inventory
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="staff-edit-inventory">
+                                                    <span class="checkbox-custom"></span>
+                                                    Edit Inventory
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="staff-orders" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    View Orders
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="staff-process-orders" checked>
+                                                    <span class="checkbox-custom"></span>
+                                                    Process Orders
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="staff-reports">
+                                                    <span class="checkbox-custom"></span>
+                                                    View Reports
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Backup & Restore Tab -->
+                            <div class="settings-tab" id="backup-tab">
+                                <h3>Backup & Restore</h3>
+                                <div class="backup-actions">
+                                    <div class="action-card">
+                                        <h4>Create Backup</h4>
+                                        <p>Create a full backup of your data including products, orders, customers, and settings.</p>
+                                        <button class="primary-btn" id="create-backup-btn"><i class="fas fa-download"></i> Create Backup</button>
+                                    </div>
+                                    
+                                    <div class="action-card">
+                                        <h4>Restore Data</h4>
+                                        <p>Restore your data from a previous backup file.</p>
+                                        <div class="file-upload">
+                                            <input type="file" id="backup-file" accept=".json">
+                                            <label for="backup-file"><i class="fas fa-upload"></i> Choose Backup File</label>
+                                        </div>
+                                        <button class="secondary-btn" id="restore-backup-btn" disabled><i class="fas fa-history"></i> Restore Backup</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="backup-history">
+                                    <h4>Backup History</h4>
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date & Time</th>
+                                                <th>Size</th>
+                                                <th>Created By</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="backup-history-table">
+                                            <tr>
+                                                <td colspan="4" class="empty-table">No backup history available</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <%- include('../partials/footer') %>
+        </main>
+    </div>
+
+    <!-- Chart.js Library -->
+    
+</body>
+</html>

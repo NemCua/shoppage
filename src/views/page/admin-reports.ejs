@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Admin Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/reponsive.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include('../partials/slide-bar') %>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- top header -->
+            <%- include('../partials/header') %>
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                
+
+                <!-- Products Page -->
+                
+
+                <!-- Inventory Page -->
+                
+
+                <!-- Orders Page -->
+                
+
+                <!-- Users Page -->
+                
+
+                <!-- Reports Page -->
+                <section id="reports-page" class="content-page">
+                    <div class="page-header">
+                        <h2>Reports & Analytics</h2>
+                        <div class="date-range-picker">
+                            <input type="date" id="report-start-date">
+                            <span>to</span>
+                            <input type="date" id="report-end-date">
+                            <button class="apply-btn" id="apply-date-range"><i class="fas fa-check"></i> Apply</button>
+                        </div>
+                    </div>
+                    
+                    <div class="report-cards">
+                        <div class="report-card">
+                            <div class="card-header">
+                                <h3>Sales Overview</h3>
+                                <div class="card-actions">
+                                    <button class="export-btn"><i class="fas fa-download"></i> Export</button>
+                                    <button class="print-btn"><i class="fas fa-print"></i> Print</button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="sales-overview-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <div class="card-header">
+                                <h3>Revenue by Category</h3>
+                                <div class="card-actions">
+                                    <button class="export-btn"><i class="fas fa-download"></i> Export</button>
+                                    <button class="print-btn"><i class="fas fa-print"></i> Print</button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="category-revenue-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="report-cards">
+                        <div class="report-card">
+                            <div class="card-header">
+                                <h3>Top Selling Products</h3>
+                                <div class="card-actions">
+                                    <button class="export-btn"><i class="fas fa-download"></i> Export</button>
+                                    <button class="print-btn"><i class="fas fa-print"></i> Print</button>
+                                </div>
+                            </div>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Category</th>
+                                            <th>Units Sold</th>
+                                            <th>Revenue</th>
+                                            <th>% of Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="top-products-table">
+                                        <!-- Top products will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <div class="card-header">
+                                <h3>Inventory Status</h3>
+                                <div class="card-actions">
+                                    <button class="export-btn"><i class="fas fa-download"></i> Export</button>
+                                    <button class="print-btn"><i class="fas fa-print"></i> Print</button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="inventory-status-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="report-card full-width">
+                        <div class="card-header">
+                            <h3>Sales Performance</h3>
+                            <div class="card-actions">
+                                <button class="export-btn"><i class="fas fa-download"></i> Export</button>
+                                <button class="print-btn"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Orders</th>
+                                        <th>Revenue</th>
+                                        <th>Average Order Value</th>
+                                        <th>Units Sold</th>
+                                        <th>Conversion Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sales-performance-table">
+                                    <!-- Sales performance data will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Page -->
+                
+            </div>
+
+            <%- include('../partials/footer') %>
+        </main>
+    </div>
+
+    <!-- Chart.js Library -->
+    
+</body>
+</html>

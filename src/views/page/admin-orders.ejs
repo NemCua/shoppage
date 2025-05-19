@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Admin Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/reponsive.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include('../partials/slide-bar') %>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- top header -->
+            <%- include('../partials/header') %>
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                
+
+                <!-- Products Page -->
+                
+
+                <!-- Inventory Page -->
+                
+
+                <!-- Orders Page -->
+                <section id="orders-page" class="content-page">
+                    <div class="page-header">
+                        <h2>Order Management</h2>
+                        <button class="add-btn" id="add-order-btn"><i class="fas fa-plus"></i> Create New Order</button>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="search-filter">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="order-search" placeholder="Search order or customer...">
+                        </div>
+                        <div class="filter-group">
+                            <select id="order-status-filter">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            <div class="date-range">
+                                <input type="date" id="start-date" placeholder="Start Date">
+                                <span>to</span>
+                                <input type="date" id="end-date" placeholder="End Date">
+                            </div>
+                            <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                        </div>
+                    </div>
+                    
+                    <div class="order-stats">
+                        <div class="stat-box pending">
+                            <h3>Pending</h3>
+                            <p id="pending-orders-count">0</p>
+                        </div>
+                        <div class="stat-box processing">
+                            <h3>Processing</h3>
+                            <p id="processing-orders-count">0</p>
+                        </div>
+                        <div class="stat-box shipped">
+                            <h3>Shipped</h3>
+                            <p id="shipped-orders-count">0</p>
+                        </div>
+                        <div class="stat-box delivered">
+                            <h3>Delivered</h3>
+                            <p id="delivered-orders-count">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Products</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Payment</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table">
+                                <!-- Orders will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Order Details Modal -->
+                    <div class="modal" id="order-details-modal">
+                        <div class="modal-content modal-lg">
+                            <div class="modal-header">
+                                <h3>Order Details - <span id="order-detail-id"></span></h3>
+                                <button class="close-btn" id="close-order-details-modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="order-details-container">
+                                    <div class="order-info-section">
+                                        <div class="order-info-box">
+                                            <h4>Order Information</h4>
+                                            <div class="order-meta">
+                                                <p><strong>Date:</strong> <span id="order-detail-date"></span></p>
+                                                <p><strong>Status:</strong> <span id="order-detail-status"></span></p>
+                                                <p><strong>Payment Method:</strong> <span id="order-detail-payment"></span></p>
+                                                <p><strong>Payment Status:</strong> <span id="order-detail-payment-status"></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="order-info-box">
+                                            <h4>Customer Information</h4>
+                                            <div class="customer-details" id="order-customer-details">
+                                                <!-- Customer details will be populated here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="order-items-section">
+                                        <h4>Order Items</h4>
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="order-items-table">
+                                                <!-- Order items will be populated here -->
+                                            </tbody>
+                                            <tfoot id="order-summary">
+                                                <!-- Order summary will be populated here -->
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="order-actions">
+                                        <select id="update-order-status">
+                                            <option value="">Update Status</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="processing">Processing</option>
+                                            <option value="shipped">Shipped</option>
+                                            <option value="delivered">Delivered</option>
+                                            <option value="cancelled">Cancelled</option>
+                                        </select>
+                                        <button class="print-btn"><i class="fas fa-print"></i> Print Invoice</button>
+                                        <button class="email-btn"><i class="fas fa-envelope"></i> Email Customer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create/Edit Order Modal -->
+                    <div class="modal" id="order-modal">
+                        <div class="modal-content modal-lg">
+                            <div class="modal-header">
+                                <h3 id="order-modal-title">Create New Order</h3>
+                                <button class="close-btn" id="close-order-modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="order-form">
+                                    <input type="hidden" id="order-id">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="order-customer">Customer</label>
+                                            <select id="order-customer" required>
+                                                <option value="">Select Customer</option>
+                                                <!-- Customers will be populated here -->
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="order-date">Order Date</label>
+                                            <input type="date" id="order-date" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-section">
+                                        <h4>Order Items</h4>
+                                        <div class="order-items" id="order-items">
+                                            <!-- Order items will be added here -->
+                                            <div class="order-item">
+                                                <div class="form-row">
+                                                    <div class="form-group">
+                                                        <label for="product-0">Product</label>
+                                                        <select id="product-0" class="product-select" required>
+                                                            <option value="">Select Product</option>
+                                                            <!-- Products will be populated here -->
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="quantity-0">Quantity</label>
+                                                        <input type="number" id="quantity-0" class="quantity-input" min="1" value="1" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="price-0">Unit Price</label>
+                                                        <input type="text" id="price-0" class="price-input" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="total-0">Total</label>
+                                                        <input type="text" id="total-0" class="total-input" readonly>
+                                                    </div>
+                                                    <div class="form-group item-actions">
+                                                        <button type="button" class="remove-item-btn"><i class="fas fa-trash"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" id="add-item-btn" class="secondary-btn"><i class="fas fa-plus"></i> Add Item</button>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="order-status">Status</label>
+                                            <select id="order-status" required>
+                                                <option value="pending">Pending</option>
+                                                <option value="processing">Processing</option>
+                                                <option value="shipped">Shipped</option>
+                                                <option value="delivered">Delivered</option>
+                                                <option value="cancelled">Cancelled</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="payment-method">Payment Method</label>
+                                            <select id="payment-method" required>
+                                                <option value="credit-card">Credit Card</option>
+                                                <option value="debit-card">Debit Card</option>
+                                                <option value="paypal">PayPal</option>
+                                                <option value="bank-transfer">Bank Transfer</option>
+                                                <option value="cash">Cash</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="payment-status">Payment Status</label>
+                                            <select id="payment-status" required>
+                                                <option value="paid">Paid</option>
+                                                <option value="pending">Pending</option>
+                                                <option value="failed">Failed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="order-summary">
+                                        <div class="summary-item">
+                                            <span>Subtotal:</span>
+                                            <span id="order-subtotal">$0.00</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span>Tax (10%):</span>
+                                            <span id="order-tax">$0.00</span>
+                                        </div>
+                                        <div class="summary-item total">
+                                            <span>Total:</span>
+                                            <span id="order-total">$0.00</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="button" class="cancel-btn" id="cancel-order-btn">Cancel</button>
+                                        <button type="submit" class="save-btn">Save Order</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Users Page -->
+                
+
+                <!-- Reports Page -->
+                
+
+                <!-- Settings Page -->
+                
+            </div>
+
+            <%- include('../partials/footer') %>
+        </main>
+    </div>
+
+    <!-- Chart.js Library -->
+    
+</body>
+</html>

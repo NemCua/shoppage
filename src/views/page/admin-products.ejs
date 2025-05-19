@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Admin Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/reponsive.css">
+
+    <link rel="stylesheet" href="../css/modal.css">
+
+    <link rel="stylesheet" href="../css/toast.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include('../partials/slide-bar') %>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- top header -->
+            <%- include('../partials/header') %>
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                
+
+                <!-- Products Page -->
+                <section id="products-page" class="content-page">
+                    <div class="page-header">
+                        <h2>Products Management</h2>
+                        <button class="add-btn" id="add-product-btn"><i class="fas fa-plus"></i> Add New Product</button>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="search-filter">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="product-search" placeholder="Search products...">
+                        </div>
+                        <div class="filter-group">
+                            <select id="category-filter">
+                                <option value="">All Categories</option>
+                                <option value="soft-drinks">Soft Drinks</option>
+                                <option value="juices">Juices</option>
+                                <option value="energy-drinks">Energy Drinks</option>
+                                <option value="water">Water</option>
+                                <option value="tea">Tea</option>
+                                <option value="coffee">Coffee</option>
+                                <option value="alcoholic">Alcoholic Beverages</option>
+                            </select>
+                            <select id="status-filter">
+                                <option value="">All Status</option>
+                                <option value="in-stock">In Stock</option>
+                                <option value="low-stock">Low Stock</option>
+                                <option value="out-of-stock">Out of Stock</option>
+                            </select>
+                            <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="products-grid">
+                        <% Products.forEach(product => { %>
+
+                            <!-- Products will be populated here -->
+                            <div class="product-card" data-id="<%= product._id %>">
+                                <div class="product-image">
+
+                                    <img class="img-product" src="<%= product.imageUrl %>" alt="">
+                                    
+                                    <% if (product.available) { %>
+                                        <span class="product-status true-status">in stock</span>
+                                    <% } else { %>
+                                        <span class="product-status false-status">none stock</span>
+                                    <% } %>
+                                   
+                                </div>
+                                <div class="product-details">
+                                    <h3 class="product-title"><%= product.name %></h3>
+                                    <p class="product-category"><%= product.tags %></p>
+                                    <div class="product-price"><%= product.price %></div>
+                                    <p class="product-stock"></p>
+                                    <div class="product-meta">
+                                        <span class="product-sku">Đơn vị: <%= product.unit %> </span>
+                                        <div class="product-actions">
+                                            <button class="view-product" data-id=""
+                                                title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="edit-product" data-id=""
+                                                title="Edit Product">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="delete-product" data-id=""
+                                                title="Delete Product">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% }) %>
+                    </div>
+
+                    <!-- Add/Edit Product Modal -->
+                    
+                </section>
+
+                <!-- Inventory Page -->
+                
+
+                <!-- Orders Page -->
+                
+
+                <!-- Users Page -->
+                
+
+                <!-- Reports Page -->
+                
+
+                <!-- Settings Page -->
+                
+            </div>
+
+            <%- include('../partials/footer') %>
+        </main>
+    </div>
+
+    <!-- Chart.js Library -->
+    <script type="module" src="../js/product.js"></script>
+</body>
+</html>

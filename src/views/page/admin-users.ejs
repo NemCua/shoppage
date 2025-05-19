@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Admin Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/reponsive.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include('../partials/slide-bar') %>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- top header -->
+            <%- include('../partials/header') %>
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                
+
+                <!-- Products Page -->
+                
+
+                <!-- Inventory Page -->
+                
+
+                <!-- Orders Page -->
+                
+
+                <!-- Users Page -->
+                <section id="users-page" class="content-page">
+                    <div class="page-header">
+                        <h2>User Management</h2>
+                        <button class="add-btn" id="add-user-btn"><i class="fas fa-plus"></i> Add New User</button>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="search-filter">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="user-search" placeholder="Search users...">
+                        </div>
+                        <div class="filter-group">
+                            <select id="role-filter">
+                                <option value="">All Roles</option>
+                                <option value="admin">Admin</option>
+                                <option value="manager">Manager</option>
+                                <option value="staff">Staff</option>
+                                <option value="customer">Customer</option>
+                            </select>
+                            <select id="status-filter">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                            <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                        </div>
+                    </div>
+                    
+                    <div class="user-stats">
+                        <div class="stat-box admin-users">
+                            <h3>Admins</h3>
+                            <p id="admin-count">0</p>
+                        </div>
+                        <div class="stat-box staff-users">
+                            <h3>Staff</h3>
+                            <p id="staff-count">0</p>
+                        </div>
+                        <div class="stat-box customer-users">
+                            <h3>Customers</h3>
+                            <p id="customer-count">0</p>
+                        </div>
+                        <div class="stat-box total-users">
+                            <h3>Total Users</h3>
+                            <p id="total-users-count">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Last Login</th>
+                                    <th>Created On</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table">
+                                <!-- Users will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Add/Edit User Modal -->
+                    <div class="modal" id="user-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 id="user-modal-title">Add New User</h3>
+                                <button class="close-btn" id="close-user-modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="user-form">
+                                    <input type="hidden" id="user-id">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="first-name">First Name</label>
+                                            <input type="text" id="first-name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last-name">Last Name</label>
+                                            <input type="text" id="last-name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" required>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="tel" id="phone">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="role">Role</label>
+                                            <select id="role" required>
+                                                <option value="">Select Role</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="manager">Manager</option>
+                                                <option value="staff">Staff</option>
+                                                <option value="customer">Customer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group password-group" id="password-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" required>
+                                        <button type="button" class="toggle-password" id="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select id="status" required>
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="cancel-btn" id="cancel-user-btn">Cancel</button>
+                                        <button type="submit" class="save-btn">Save User</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reports Page -->
+                
+
+                <!-- Settings Page -->
+                
+            </div>
+
+            <%- include('../partials/footer') %>
+        </main>
+    </div>
+
+    <!-- Chart.js Library -->
+    
+</body>
+</html>

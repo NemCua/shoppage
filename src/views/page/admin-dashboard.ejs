@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Admin Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/reponsive.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include('../partials/slide-bar') %>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- top header -->
+            <%- include('../partials/header') %>
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                <section id="dashboard-page" class="content-page active">
+                    <div class="page-header">
+                        <h2>Dashboard</h2>
+                        <div class="date-picker">
+                            <button><i class="fas fa-calendar"></i> Today <i class="fas fa-chevron-down"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: rgba(80, 115, 251, 0.1);">
+                                <i class="fas fa-shopping-cart" style="color: #5073FB;"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Orders</h3>
+                                <p class="stat-value" id="total-orders">0</p>
+                                <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 16% from last month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: rgba(252, 143, 10, 0.1);">
+                                <i class="fas fa-dollar-sign" style="color: #FC8F0A;"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Revenue</h3>
+                                <p class="stat-value" id="total-revenue">$0</p>
+                                <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 8% from last month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: rgba(255, 91, 91, 0.1);">
+                                <i class="fas fa-wine-bottle" style="color: #FF5B5B;"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Products</h3>
+                                <p class="stat-value" id="total-products">0</p>
+                                <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 5% from last month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background-color: rgba(10, 207, 151, 0.1);">
+                                <i class="fas fa-users" style="color: #0ACF97;"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Customers</h3>
+                                <p class="stat-value" id="total-customers">0</p>
+                                <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-cards">
+                        <div class="chart-card">
+                            <div class="card-header">
+                                <h3>Sales Overview</h3>
+                                <div class="chart-actions">
+                                    <button class="active">Monthly</button>
+                                    <button>Weekly</button>
+                                    <button>Daily</button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="sales-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-orders-card">
+                            <div class="card-header">
+                                <h3>Recent Orders</h3>
+                                <button class="view-all-btn">View All</button>
+                            </div>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Product</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recent-orders-table">
+                                        <!-- Recent orders will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-bottom">
+                        <div class="top-products-card">
+                            <div class="card-header">
+                                <h3>Top Selling Products</h3>
+                                <div class="dropdown">
+                                    <button class="dropdown-btn">This Month <i class="fas fa-chevron-down"></i></button>
+                                </div>
+                            </div>
+                            <div class="top-products-list" id="top-products-list">
+                                <!-- Top products will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <div class="inventory-alert-card">
+                            <div class="card-header">
+                                <h3>Inventory Alerts</h3>
+                                <div class="dropdown">
+                                    <button class="dropdown-btn">All <i class="fas fa-chevron-down"></i></button>
+                                </div>
+                            </div>
+                            <div class="inventory-alerts" id="inventory-alerts">
+                                <!-- Inventory alerts will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Products Page -->
+                
+
+                <!-- Inventory Page -->
+                
+
+                <!-- Orders Page -->
+                
+
+                <!-- Users Page -->
+                
+
+                <!-- Reports Page -->
+                
+
+                <!-- Settings Page -->
+                
+            </div>
+
+            <%- include('../partials/footer') %>
+        </main>
+    </div>
+
+    <!-- Chart.js Library -->
+    
+</body>
+</html>

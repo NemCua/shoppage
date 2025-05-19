@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Admin Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/reponsive.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include('../partials/slide-bar') %>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- top header -->
+            <%- include('../partials/header') %>
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                
+
+                <!-- Products Page -->
+                
+
+                <!-- Inventory Page -->
+                <section id="inventory-page" class="content-page">
+                    <div class="page-header">
+                        <h2>Inventory Management</h2>
+                        <button class="add-btn" id="update-inventory-btn"><i class="fas fa-sync"></i> Update Inventory</button>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="search-filter">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="inventory-search" placeholder="Search inventory...">
+                        </div>
+                        <div class="filter-group">
+                            <select id="inventory-category-filter">
+                                <option value="">All Categories</option>
+                                <option value="soft-drinks">Soft Drinks</option>
+                                <option value="juices">Juices</option>
+                                <option value="energy-drinks">Energy Drinks</option>
+                                <option value="water">Water</option>
+                                <option value="tea">Tea</option>
+                                <option value="coffee">Coffee</option>
+                                <option value="alcoholic">Alcoholic Beverages</option>
+                            </select>
+                            <select id="inventory-status-filter">
+                                <option value="">All Stock Status</option>
+                                <option value="in-stock">In Stock</option>
+                                <option value="low-stock">Low Stock</option>
+                                <option value="out-of-stock">Out of Stock</option>
+                            </select>
+                            <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                        </div>
+                    </div>
+                    
+                    <div class="inventory-stats">
+                        <div class="stat-box in-stock">
+                            <h3>In Stock</h3>
+                            <p id="in-stock-count">0</p>
+                        </div>
+                        <div class="stat-box low-stock">
+                            <h3>Low Stock</h3>
+                            <p id="low-stock-count">0</p>
+                        </div>
+                        <div class="stat-box out-of-stock">
+                            <h3>Out of Stock</h3>
+                            <p id="out-of-stock-count">0</p>
+                        </div>
+                        <div class="stat-box total-inventory">
+                            <h3>Total Inventory Value</h3>
+                            <p id="total-inventory-value">$0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>SKU</th>
+                                    <th>Category</th>
+                                    <th>Unit Price</th>
+                                    <th>Stock Quantity</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventory-table">
+                                <!-- Inventory items will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Update Inventory Modal -->
+                    <div class="modal" id="inventory-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Update Inventory</h3>
+                                <button class="close-btn" id="close-inventory-modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="inventory-form">
+                                    <input type="hidden" id="inventory-product-id">
+                                    <div class="form-group">
+                                        <label for="inventory-product-name">Product</label>
+                                        <input type="text" id="inventory-product-name" disabled>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="inventory-current-stock">Current Stock</label>
+                                            <input type="number" id="inventory-current-stock" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inventory-adjustment">Adjustment</label>
+                                            <input type="number" id="inventory-adjustment" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inventory-adjustment-reason">Reason for Adjustment</label>
+                                        <select id="inventory-adjustment-reason" required>
+                                            <option value="">Select Reason</option>
+                                            <option value="restock">Restock</option>
+                                            <option value="damage">Damaged Products</option>
+                                            <option value="theft">Theft/Loss</option>
+                                            <option value="return">Customer Return</option>
+                                            <option value="correction">Inventory Correction</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inventory-notes">Notes</label>
+                                        <textarea id="inventory-notes" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="cancel-btn" id="cancel-inventory-btn">Cancel</button>
+                                        <button type="submit" class="save-btn">Save Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Page -->
+                
+
+                <!-- Users Page -->
+                
+
+                <!-- Reports Page -->
+                
+
+                <!-- Settings Page -->
+                
+            </div>
+
+            <%- include('../partials/footer') %>
+        </main>
+    </div>
+
+    <!-- Chart.js Library -->
+    
+</body>
+</html>
